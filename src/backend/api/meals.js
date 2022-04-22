@@ -3,6 +3,9 @@ const router = express.Router();
 const knex = require("../database");
 const { parse } = require("path");
 
+//NOTE: Everything works except for the availableReservations param route when combnining with other params.
+//SQL strict mode won't let groupping in this case - help needed :)
+
 router.get("/", async (request, response) => {
   try {
     const maxPrice = request.query.maxPrice;
@@ -21,7 +24,7 @@ router.get("/", async (request, response) => {
       if (maxPrice) {
         if (!isNaN(parseInt(maxPrice))) {
           supportedParams = true;
-          results = await results.select("*").where("price", "<=", maxPrice);
+          results = results.select("*").where("price", "<=", maxPrice);
         } else {
           supportedParams = false;
           response
@@ -34,10 +37,17 @@ router.get("/", async (request, response) => {
       if (availableReservations) {
         if (availableReservations == "true") {
           supportedParams = true;
-          results = await results
+          results = results
             .leftJoin("reservations", "meals.id", "reservations.meal_id")
             .select(
-              "meals.*",
+              "meals.id",
+              "meals.title",
+              "meals.description",
+              "meals.price",
+              "meals.max_reservations",
+              knex.raw(
+                "SUM(IFNULL(number_of_guests,0)) AS `guests_registered`"
+              ),
               knex.raw(
                 "meals.max_reservations - SUM(IFNULL(number_of_guests,0)) AS `reservations_available`"
               )
@@ -62,7 +72,7 @@ router.get("/", async (request, response) => {
       if (limit) {
         if (!isNaN(parseInt(limit))) {
           supportedParams = true;
-          results = await results.limit(parseInt(limit));
+          results = results.limit(parseInt(limit));
         } else {
           response
             .status(400)
@@ -73,16 +83,14 @@ router.get("/", async (request, response) => {
 
       if (title) {
         supportedParams = true;
-        results = await results
-          .where("title", "like", `%${title}%`)
-          .select("*");
+        results = results.where("title", "like", `%${title}%`).select("*");
       }
 
       if (createdAfter) {
         if (new Date(createdAfter) != "Invalid Date") {
           supportedParams = true;
           const createdAfterFormatted = new Date(createdAfter);
-          results = await results
+          results = results
             .where("created_date", ">", createdAfterFormatted)
             .select("*");
         } else {
@@ -92,7 +100,8 @@ router.get("/", async (request, response) => {
       }
 
       if (supportedParams === true) {
-        response.status(200).json(results);
+        resultsFinal = await results;
+        response.status(200).json(resultsFinal);
       } else {
         response.status(400).send("Inserted params are not supported");
       }
