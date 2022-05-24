@@ -13,18 +13,17 @@ router.get("/", async (request, response) => {
     const title = request.query.title;
     const createdAfter = request.query.createdAfter;
     const limit = request.query.limit;
-    let results = knex("meals");
+    const results = await knex("meals");
 
     if (Object.keys(request.query).length == 0) {
-      const meals = await knex("meals").select("*");
-      response.json(meals);
+      response.json(results);
     } else {
       let supportedParams = false;
 
       if (maxPrice) {
         if (!isNaN(parseInt(maxPrice))) {
           supportedParams = true;
-          results = results.select("*").where("price", "<=", maxPrice);
+          results.select().where("price", "<=", maxPrice);
         } else {
           supportedParams = false;
           response
@@ -34,10 +33,38 @@ router.get("/", async (request, response) => {
         }
       }
 
+      if (limit) {
+        if (!isNaN(parseInt(limit))) {
+          supportedParams = true;
+          results.limit(parseInt(limit));
+        } else {
+          response
+            .status(400)
+            .send("Failed to parse limit value. Please check the format");
+          return;
+        }
+      }
+
+      if (title) {
+        supportedParams = true;
+        results.where("title", "like", `%${title}%`).select();
+      }
+
+      if (createdAfter) {
+        if (new Date(createdAfter) != "Invalid Date") {
+          supportedParams = true;
+          const createdAfterFormatted = new Date(createdAfter);
+          results.where("created_date", ">", createdAfterFormatted).select();
+        } else {
+          response.status(400).send("Failed to parse the date");
+          return;
+        }
+      }
+
       if (availableReservations) {
         if (availableReservations == "true") {
           supportedParams = true;
-          results = results
+          results
             .leftJoin("reservations", "meals.id", "reservations.meal_id")
             .select(
               "meals.id",
@@ -52,8 +79,8 @@ router.get("/", async (request, response) => {
                 "meals.max_reservations - SUM(IFNULL(number_of_guests,0)) AS `reservations_available`"
               )
             )
-            .where("max_reservations", ">", "number_of_guests")
             .groupBy("meals.id")
+            .where("max_reservations", ">", "number_of_guests")
             .having(
               knex.raw(
                 "(meals.max_reservations - SUM(IFNULL(number_of_guests,0)))>0"
@@ -65,36 +92,6 @@ router.get("/", async (request, response) => {
             .send(
               "The inserted param is not boolean. Please check the format."
             );
-          return;
-        }
-      }
-
-      if (limit) {
-        if (!isNaN(parseInt(limit))) {
-          supportedParams = true;
-          results = results.limit(parseInt(limit));
-        } else {
-          response
-            .status(400)
-            .send("Failed to parse limit value. Please check the format");
-          return;
-        }
-      }
-
-      if (title) {
-        supportedParams = true;
-        results = results.where("title", "like", `%${title}%`).select("*");
-      }
-
-      if (createdAfter) {
-        if (new Date(createdAfter) != "Invalid Date") {
-          supportedParams = true;
-          const createdAfterFormatted = new Date(createdAfter);
-          results = results
-            .where("created_date", ">", createdAfterFormatted)
-            .select("*");
-        } else {
-          response.status(400).send("Failed to parse the date");
           return;
         }
       }
