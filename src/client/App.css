@@ -1,3 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600;700&display=swap");
+
 * {
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+header,
+footer {
+  height: 100px;
+}
+
+button {
+  padding: 12px 12px;
+  background-color: #7ed957;
+  border: 1px solid #7ed957;
+  border-radius: 5px;
+  box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
+  color: white;
+  height: 40px;
+  font-weight: 500;
+}
+
+button:hover {
+  filter: saturate(1.5);
+}
+
+.mainButton {
+  text-decoration: none;
+  color: white;
+}
+
+.ghostButton {
+  background-color: white;
+  cursor: pointer;
+  color: green;
+}
+
+.ghostButton:hover {
+  border-radius: 5px;
+  border-color: lightgreen;
+  background: lightgreen;
+  color: white;
+}
+
+.ghostButton {
+  text-decoration: none;
+  color: green;
+}
+
+.red {
+  border: 1px solid red;
+  color: red;
+}
+
+.red:hover {
+  border-color: red;
+  background-color: red;
+  color: white;
+}
+
+.greenHeading {
+  font-weight: 600;
+  color: #29700a;
+}
+
+.searchBar {
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border: 1px solid darkgreen;
+  width: 40%;
+  padding: 4px 4px;
+  outline-color: #29700a;
+}
+
+.centered-div {
+  text-align: center;
+  margin: auto;
 }

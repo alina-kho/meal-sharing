@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+.banner {
+  height: 500px;
+  background-image: url("home.png");
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  color: black;
+}
+
+.bannerText {
+  position: relative;
+  top: 150px;
+  right: 5%;
+  text-align: right;
+}
+
+.banner h1 {
+  font-weight: 500;
+}
+
+.banner h2 {
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.thin-heading {
+  text-align: center;
+  margin: 20px 0px;
+  font-weight: 500;
+}

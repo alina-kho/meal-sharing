@@ -1,0 +1,16 @@
+.callToAction {
+  height: 200px;
+  background-image: url("call-to-action.png");
+  background-position: center;
+}
+
+.callToActionText {
+  position: relative;
+  top: 30%;
+  right: 10%;
+  text-align: right;
+}
+
+.callToActionText p {
+  margin-bottom: 10px;
+}

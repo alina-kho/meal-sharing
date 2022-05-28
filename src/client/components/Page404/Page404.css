@@ -1,0 +1,22 @@
+.pageContainer {
+  height: 500px;
+  background-image: url("404.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.textContainer h1,
+.textContainer h2 {
+  font-weight: 500;
+}
+
+.textContainer h2 {
+  margin-bottom: 15px;
+}
+
+.textContainer {
+  background-image: none;
+  position: absolute;
+  left: 7%;
+  top: 40%;
+}
