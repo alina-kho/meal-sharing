@@ -12,7 +12,7 @@ export const DeleteMeal = () => {
       },
     }).then((response) => {
       if (response.ok) {
-        alert("The meal has been deletes!");
+        alert("The meal has been deleted!");
         browseHistory.push("/meals");
         return response.json();
       } else {
