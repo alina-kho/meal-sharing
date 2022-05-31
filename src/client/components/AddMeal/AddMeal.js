@@ -16,7 +16,7 @@ export const AddMeal = () => {
   const handleInput = (e) => {
     const key = e.target.name;
     const value = e.target.value;
-    setInputValues((setInputValues) => ({ ...inputValues, [key]: value }));
+    setInputValues((inputValues) => ({ ...inputValues, [key]: value }));
   };
 
   //This is done in accrodance with the data model provided in the backend for the post request

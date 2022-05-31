@@ -14,7 +14,7 @@ export const Meals = () => {
   };
 
   async function fetchAllMeals() {
-    if (inputValue == "") {
+    if (inputValue === "") {
       const fetchedData = await fetch("/api/meals");
       const response = await fetchedData.json();
       contextValues.setIsLoading(false);

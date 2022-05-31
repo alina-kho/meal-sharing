@@ -24,7 +24,7 @@ export const Home = () => {
     }
   }, []);
 
-  console.log(contextValues.meals);
+  // console.log(contextValues.meals);
 
   return (
     <>
