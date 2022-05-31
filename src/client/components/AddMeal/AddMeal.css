@@ -22,10 +22,6 @@
   margin-bottom: 3px;
 }
 
-.add-meal button {
-  cursor: pointer;
-}
-
 .flex-buttons {
   display: flex;
   justify-content: center;
@@ -35,4 +31,11 @@
 .add-form input {
   padding: 3px 3px;
   outline-color: lightgreen;
+}
+
+#back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }

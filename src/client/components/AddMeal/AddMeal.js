@@ -45,70 +45,74 @@ export const AddMeal = () => {
     <div className="add-meal">
       <h1 className="thin-heading">Add a New Meal</h1>
       <p>If you want to share a meal with others, fill out the form below.</p>
-      <form className="add-form">
-        <label>
-          Title
-          <input
-            type="text"
-            name="title"
-            onChange={handleInput}
-            required
-          ></input>
-        </label>
-        <label>
-          Description{" "}
-          <input
-            type="text"
-            name="description"
-            onChange={handleInput}
-            required
-          ></input>
-        </label>
-        <label>
-          Location{" "}
-          <input
-            type="text"
-            name="location"
-            onChange={handleInput}
-            required
-          ></input>
-        </label>
-        <label>
-          When{" "}
-          <input
-            type="datetime-local"
-            name="when"
-            onChange={handleInput}
-            required
-          ></input>
-        </label>
-        <label>
-          Price{" "}
-          <input
-            type="number"
-            name="price"
-            onChange={handleInput}
-            required
-          ></input>
-        </label>
-        <label>
-          Max. reservations{" "}
-          <input
-            type="number"
-            name="maxReservations"
-            onChange={handleInput}
-            required
-          ></input>
-        </label>
+      <form>
+        <div className="add-form">
+          <label>
+            Title
+            <input
+              type="text"
+              name="title"
+              onChange={handleInput}
+              required
+            ></input>
+          </label>
+          <label>
+            Description{" "}
+            <input
+              type="text"
+              name="description"
+              onChange={handleInput}
+              required
+            ></input>
+          </label>
+          <label>
+            Location{" "}
+            <input
+              type="text"
+              name="location"
+              onChange={handleInput}
+              required
+            ></input>
+          </label>
+          <label>
+            When{" "}
+            <input
+              type="datetime-local"
+              name="when"
+              onChange={handleInput}
+              required
+            ></input>
+          </label>
+          <label>
+            Price{" "}
+            <input
+              type="number"
+              name="price"
+              onChange={handleInput}
+              required
+            ></input>
+          </label>
+          <label>
+            Max. reservations{" "}
+            <input
+              type="number"
+              name="maxReservations"
+              onChange={handleInput}
+              required
+            ></input>
+          </label>
+        </div>
+        <div className="flex-buttons">
+          <Link to="/" className="ghostButton">
+            <button className="ghostButton" id="back">
+              Back to the Homepage
+            </button>
+          </Link>
+          <button className="mainButton" onClick={handleSubmit} type="submit">
+            Submit
+          </button>
+        </div>
       </form>
-      <div className="flex-buttons">
-        <Link to="/">
-          <button className="ghostButton">Back to the Homepage</button>
-        </Link>
-        <button className="mainButton" onClick={handleSubmit} type="submit">
-          Submit
-        </button>
-      </div>
     </div>
   );
 };

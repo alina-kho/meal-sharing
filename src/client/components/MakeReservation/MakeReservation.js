@@ -70,10 +70,10 @@ export const MakeReservation = (props) => {
               onChange={handleInput}
             ></input>
           </label>
+          <button type="submit" onClick={handleSubmit}>
+            Submit
+          </button>
         </form>
-        <button type="submit" onClick={handleSubmit}>
-          Submit
-        </button>
       </div>
     </div>
   );
