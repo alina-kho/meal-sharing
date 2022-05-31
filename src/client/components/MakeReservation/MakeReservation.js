@@ -3,38 +3,56 @@ import { useState } from "react";
 import "./MakeReservation.css";
 
 export const MakeReservation = (props) => {
-  const [inputValues, setInputValues] = useState({});
+  const [inputValues, setInputValues] = useState({
+    contactPhonenumber: "",
+    contactName: "",
+    contactEmail: "",
+  });
 
   const handleInput = (e) => {
     const key = e.target.name;
     const value = e.target.value;
     setInputValues((inputValues) => ({ ...inputValues, [key]: value }));
   };
+  console.log(inputValues);
 
-  const handleSubmit = (e) => {
-    const newBooking = {
-      numberOfGuests: 1,
-      mealId: props.id,
-      contactPhonenumber: inputValues.contactPhonenumber,
-      contactName: inputValues.contactName,
-      contactEmail: inputValues.contactEmail,
-    };
-
-    fetch("api/reservations/", {
-      method: "POST",
-      body: JSON.stringify(newBooking),
-      headers: {
-        "Content-type": "application/json",
-      },
-    }).then((response) => {
-      if (response.ok) {
-        alert("You have got the spot!");
-        setInputValues({});
-        return response.json();
-      } else {
-        alert("Something went wrong. Please try again");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    //Adding extra validation to avoid 504 error and app crash
+    if (
+      inputValues.contactEmail !== "" &&
+      inputValues.contactPhonenumber !== "" &&
+      inputValues.contactName !== ""
+    ) {
+      const newBooking = {
+        numberOfGuests: 1,
+        mealId: props.id,
+        contactPhonenumber: inputValues.contactPhonenumber,
+        contactName: inputValues.contactName,
+        contactEmail: inputValues.contactEmail,
+      };
+      try {
+        const response = await fetch("api/reservations/", {
+          method: "POST",
+          body: JSON.stringify(newBooking),
+          headers: {
+            "Content-type": "application/json",
+          },
+        });
+        if (response.ok) {
+          alert("You have got the spot!");
+          return response;
+        } else {
+          alert(`Something went wrong: ${response.status}. Please try again`);
+          return;
+        }
+      } catch (error) {
+        console.log(error);
       }
-    });
+    } else {
+      alert("You should fill out all the fields");
+      return;
+    }
   };
 
   return (

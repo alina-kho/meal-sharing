@@ -4,7 +4,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export const AddMeal = () => {
-  const [inputValues, setInputValues] = useState({});
+  const [inputValues, setInputValues] = useState({
+    title: "",
+    description: "",
+    location: "",
+    when: null,
+    maxReservations: null,
+    price: null,
+  });
 
   const handleInput = (e) => {
     const key = e.target.name;
@@ -13,32 +20,48 @@ export const AddMeal = () => {
   };
 
   //This is done in accrodance with the data model provided in the backend for the post request
-  const handleSubmit = (e) => {
-    const newMeal = {
-      title: inputValues.title,
-      description: inputValues.description,
-      location: inputValues.location,
-      when: inputValues.when,
-      maxReservations: inputValues.maxReservations,
-      price: inputValues.price,
-    };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // Extra validation is added to avoid 504 error and app crash
+    if (
+      inputValues.title !== "" &&
+      inputValues.description !== "" &&
+      inputValues.location !== "" &&
+      inputValues.maxReservations !== null &&
+      inputValues.price !== null &&
+      inputValues.when !== null
+    ) {
+      const newMeal = {
+        title: inputValues.title,
+        description: inputValues.description,
+        location: inputValues.location,
+        when: inputValues.when,
+        maxReservations: inputValues.maxReservations,
+        price: inputValues.price,
+      };
 
-    fetch("api/meals/", {
-      method: "POST",
-      body: JSON.stringify(newMeal),
-      headers: {
-        "Content-type": "application/json",
-      },
-    }).then((response) => {
-      if (response.ok) {
-        alert("Your meal has been added");
-        setInputValues({});
-        return response.json();
-      } else {
-        alert("Something went wrong. Please try again");
-        return;
+      try {
+        const response = await fetch("api/meals/", {
+          method: "POST",
+          body: JSON.stringify(newMeal),
+          headers: {
+            "Content-type": "application/json",
+          },
+        });
+        if (response.ok) {
+          alert("Your meal has been added");
+          return response;
+        } else {
+          alert(`Something went wrong: ${response.status}. Please try again`);
+          return;
+        }
+      } catch (error) {
+        console.log(error);
       }
-    });
+    } else {
+      alert("You should fill out all the fields");
+      return;
+    }
   };
 
   return (
