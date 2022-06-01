@@ -8,7 +8,11 @@ export const Navbar = () => {
   return (
     <header>
       <Link to="/">
-        <img alt="logo" src="/logo.png" id="logo"></img>
+        <img
+          alt="logo"
+          src="src\client\components\Navbar\logo.png"
+          id="logo"
+        ></img>
       </Link>
 
       <nav>
