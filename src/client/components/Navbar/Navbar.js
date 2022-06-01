@@ -1,7 +1,6 @@
 import React from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-import { Logo } from "./Logo";
 // import { Meals } from "../Meals";
 // import { About } from "../About";
 
@@ -9,7 +8,11 @@ export const Navbar = () => {
   return (
     <header>
       <Link to="/">
-        <Logo />
+        <img
+          alt="logo"
+          src="src/client/components/Navbar/logo.png"
+          id="logo"
+        ></img>
       </Link>
 
       <nav>
