@@ -68,7 +68,7 @@ export const AddMeal = () => {
     <div className="add-meal">
       <h1 className="thin-heading">Add a New Meal</h1>
       <p>If you want to share a meal with others, fill out the form below.</p>
-      <form>
+      <form className="form">
         <div className="add-form">
           <label>
             Title

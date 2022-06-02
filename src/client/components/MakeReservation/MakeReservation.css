@@ -9,7 +9,7 @@
 
 .reservation-form-container {
   margin: auto;
-  width: 30%;
+  width: 40vw;
   padding: 10px 20px;
   border-radius: 5%;
   background-color: rgba(255, 255, 255, 0.85);
@@ -34,4 +34,13 @@
 
 .italics {
   font-style: italic;
+}
+
+@media screen and (max-width: 900px) {
+  .reservation-form-wrapper {
+    background-position: center;
+  }
+  .reservation-form-container {
+    width: 50vw;
+  }
 }

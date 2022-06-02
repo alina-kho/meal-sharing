@@ -1,0 +1,30 @@
+.about {
+  background-image: url("about.png");
+  background-position: right;
+  height: 80vh;
+}
+
+.green-span {
+  color: green;
+  font-weight: 600;
+}
+
+article {
+  padding: 2% 2%;
+  background-color: rgba(255, 255, 255, 0.75);
+  position: relative;
+  top: 30%;
+  left: 3%;
+  border-radius: 5px;
+  width: 40vw;
+}
+
+@media screen and (max-width: 900px) {
+  article {
+    padding: 5% 5%;
+    width: 60vw;
+    position: relative;
+    top: 30%;
+    left: 20%;
+  }
+}

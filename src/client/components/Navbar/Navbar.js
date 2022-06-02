@@ -2,12 +2,10 @@ import React from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import logo from "./logo.png";
-// import { Meals } from "../Meals";
-// import { About } from "../About";
 
 export const Navbar = () => {
   return (
-    <header>
+    <header className="mobile-header">
       <Link to="/">
         <img alt="logo" src={logo} id="logo"></img>
       </Link>

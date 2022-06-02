@@ -52,14 +52,14 @@ export const MealById = () => {
         <MakeReservation id={id} />
       ) : (
         <div className="noSpotsContainer">
-          <h3 className="noSpotsMessage center">
-            No spots left for this meal, sorry...
-          </h3>
-          <button className="noSpotsAlign redButton">
-            <Link className="mainButton" to="/meals">
-              Back to Meals
-            </Link>
-          </button>
+          <div className="noSpotsMessage">
+            <h3 className="center">No spots left for this meal, sorry...</h3>
+            <button className="noSpotsAlign redButton">
+              <Link className="mainButton" to="/meals">
+                Back to Meals
+              </Link>
+            </button>
+          </div>
         </div>
       )}
     </div>

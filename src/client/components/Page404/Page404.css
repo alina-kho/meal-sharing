@@ -1,4 +1,6 @@
 .pageContainer {
+  width: auto;
+  overflow-x: hidden;
   height: 500px;
   background-image: url("404.png");
   background-size: cover;
@@ -16,7 +18,13 @@
 
 .textContainer {
   background-image: none;
-  position: absolute;
+  position: relative;
   left: 7%;
   top: 40%;
+}
+
+@media screen and (max-width: 900px) {
+  .textContainer {
+    font-size: 0.75em;
+  }
 }

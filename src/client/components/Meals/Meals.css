@@ -14,3 +14,9 @@
 .callToActionText p {
   margin-bottom: 10px;
 }
+
+@media screen and (max-width: 650px) {
+  .searchBar {
+    width: 60%;
+  }
+}

@@ -52,3 +52,20 @@
 .marginTop {
   margin-top: 10px;
 }
+
+@media screen and (max-width: 650px) {
+  .mobile-results {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-meal {
+    width: 75vw;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .mobile-results {
+    grid-template-columns: 50% 50%;
+  }
+}

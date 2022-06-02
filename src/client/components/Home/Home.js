@@ -29,7 +29,7 @@ export const Home = () => {
   return (
     <>
       <div className="banner">
-        <div className="bannerText">
+        <div className="bannerText mobile-bannertext">
           <h1>Welcome to Meal to Share</h1>
           <h2>Share your meal with others</h2>
           <button>

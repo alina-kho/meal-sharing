@@ -8,7 +8,7 @@ import { CalendarIcon } from "./svg/CalendarIcon";
 export const RenderedMeal = (props) => {
   return (
     <Link className="mealLink" to={"meals/" + props.meal.id}>
-      <li className="meal">
+      <li className="meal mobile-meal">
         <h3>{props.meal.title}</h3>
         <div className="flex">
           <p className="location marginRight">

@@ -11,7 +11,7 @@ export const RenderedResults = () => {
         <p className="message">Loading...</p>
       ) : (
         <div className="results">
-          <ul className="grid">
+          <ul className="grid mobile-results">
             {contextValues.meals.length > 0 ? (
               contextValues.meals.map((meal) => {
                 return <RenderedMeal key={meal.id} meal={meal} />;
