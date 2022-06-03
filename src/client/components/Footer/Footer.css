@@ -1,0 +1,37 @@
+footer {
+  color: white;
+  background-color: #7ed957;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.2);
+  font-size: 0.8em;
+}
+
+footer ul {
+  display: block;
+  margin-left: 50px;
+}
+
+.footerLink {
+  margin-bottom: 10px;
+  color: white;
+  text-decoration: none;
+}
+
+.footerLink:hover {
+  text-decoration: underline;
+}
+
+.socialMedia {
+  margin-right: 50px;
+}
+
+.socialMedia ul {
+  display: flex;
+}
+
+.socialMedia h3 {
+  font-weight: 400;
+  margin-bottom: 5px;
+}

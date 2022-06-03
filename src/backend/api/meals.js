@@ -13,10 +13,11 @@ router.get("/", async (request, response) => {
     const title = request.query.title;
     const createdAfter = request.query.createdAfter;
     const limit = request.query.limit;
-    const results = await knex("meals");
+    let results = knex("meals");
 
     if (Object.keys(request.query).length == 0) {
-      response.json(results);
+      let meals = await knex("meals");
+      response.json(meals);
     } else {
       let supportedParams = false;
 
@@ -70,6 +71,8 @@ router.get("/", async (request, response) => {
               "meals.id",
               "meals.title",
               "meals.description",
+              "meals.location",
+              "meals.when",
               "meals.price",
               "meals.max_reservations",
               knex.raw(
@@ -97,7 +100,7 @@ router.get("/", async (request, response) => {
       }
 
       if (supportedParams === true) {
-        resultsFinal = await results;
+        const resultsFinal = await results;
         response.status(200).json(resultsFinal);
       } else {
         response.status(400).send("Inserted params are not supported");

@@ -1,0 +1,63 @@
+.meal-page {
+  text-align: center;
+}
+
+.mealProfile {
+  padding-bottom: 20px;
+}
+
+.mealProfile h1 {
+  padding: 10px 0;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  margin: 5px 0;
+}
+
+.centeredFlex {
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.shortInfo {
+  padding-bottom: 20px;
+}
+
+.center {
+  text-align: center;
+}
+
+.button-center {
+  margin: auto;
+  text-align: center;
+}
+
+.noSpotsContainer {
+  height: 300px;
+  background-image: url("nospots.png");
+  background-position: bottom;
+}
+
+.noSpotsMessage {
+  width: 50vw;
+  margin: auto;
+  padding: 5% 4%;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 5px;
+  position: relative;
+  top: 25%;
+  text-align: center;
+  color: red;
+}
+
+.noSpotsMessage p {
+  margin-bottom: 10px;
+}
+
+.redButton {
+  margin-top: 10px;
+  background-color: rgb(224, 34, 0);
+  border: 1px solid tomato;
+}

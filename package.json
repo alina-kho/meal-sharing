@@ -23,7 +23,7 @@
     "@babel/preset-react": "^7.12.1",
     "@types/xml": "^1.0.3",
     "app-root-path": "^2.1.0",
-    "babel-loader": "^8.2.4",
+    "babel-loader": "^8.1.0",
     "babel-polyfill": "^6.26.0",
     "body-parser": "^1.18.3",
     "cookie-parser": "~1.4.3",
@@ -31,7 +31,7 @@
     "css-loader": "^5.0.0",
     "debug": "~2.6.0",
     "dotenv": "^4.0.0",
-    "dotenv-webpack": "^7.1.0",
+    "dotenv-webpack": "^1.7.0",
     "express": "^4.16.4",
     "express-brute": "^1.0.1",
     "express-form-data": "^2.0.1",
@@ -42,21 +42,22 @@
     "path": "^0.12.7",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
+    "react-rating-stars-component": "^2.2.0",
     "react-router-dom": "^5.0.1",
     "sass": "^1.27.1",
     "sass-loader": "^10.0.4",
     "serve-favicon": "2.4.5",
     "style-loader": "^2.0.0",
     "url-loader": "^4.1.1",
-    "webpack": "5.70.0",
-    "webpack-cli": "^4.9.2"
+    "webpack": "4.36.0",
+    "webpack-cli": "3.3.5"
   },
   "devDependencies": {
     "case-sensitive-paths-webpack-plugin": "^2.3.0",
-    "concurrently": "^7.0.0",
-    "install-peers": "^1.0.3",
-    "nodemon": "^2.0.15",
-    "sequelize-cli": "^6.4.1",
-    "webpack-dev-server": "^4.7.4"
+    "concurrently": "^5.3.0",
+    "file-loader": "^6.2.0",
+    "nodemon": "^1.12.1",
+    "sequelize-cli": "^5.4.0",
+    "webpack-dev-server": "^3.11.0"
   }
 }
