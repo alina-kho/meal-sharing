@@ -41,3 +41,4 @@ This is an individual project built over three classes of HackYourFuture bootcam
 ## ✍️ Authors <a name = "authors"></a>
 
 - [@benna100](https://github.com/benna100) - Idea & Initial work
+- [@alina-kho](https://github.com/alina-kho) - Building & deploying the clone project
